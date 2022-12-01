@@ -13,10 +13,10 @@ module.exports = {
 
     prueba: async (req, res) => {
         try {
-            console.log('Ejecutando prueba MÉDICOS')
+            console.log('Listado de Médicos')
             
             res.json({
-                message: "Hola Mundo MÉDICOS"
+                message: "Listado de Médicos"
             })
 
         } catch (err) {
