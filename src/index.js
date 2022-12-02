@@ -4,11 +4,12 @@
 const express = require('express') // importar express
 const routerConfig = require('./routes/index.routes.js') // importar el archivo de rutas 
 const globalConstants = require('./const/globalConstants.js') // importar el archivo de constantes globales 
-
+const logger = require('morgan') // importar dependencia 
  
 const configuracionApi = (app) => { // configurar la api
     app.use(express.json()) // para que la api pueda recibir json
-    app.use(express.urlencoded({extended: true}))
+    app.use(express.urlencoded({extended: true})) // para que la api pueda recibir formularios 
+    app.use (logger('dev')) //   
 
     return;
 }; 
