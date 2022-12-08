@@ -4,9 +4,9 @@ const globalConstants = require('../../const/globalConstants')
 module.exports = {
 
   "development": {
-    "username": "root",
-    "password": "1234",
-    "database": "database_desa",
+    "username": globalConstants.DB_USERNAME,
+    "password": globalConstants.DB_PASSWORD,
+    "database": globalConstants.DB_NAME,
     "host": "127.0.0.1",
     "dialect": "postgres",
     "logging": false 

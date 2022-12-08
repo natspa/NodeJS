@@ -1,10 +1,11 @@
 {
   "name": "tp-1",
   "version": "1.0.0",
-  "description": "Trabajo Práctico Nº1",
+  "description": "Trabajo Práctico Nº2",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
+    "db:create": "npx sequelize-cli db:create",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Natalia Spañol",
