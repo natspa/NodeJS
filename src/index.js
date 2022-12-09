@@ -1,11 +1,14 @@
 
 // TIENE TODA LA CONFIGURACION DE LA API
 
-const express = require('express') // importar express
+const express = require('express') // importar dependencia/libreria express (framework para nodejs)
 const routerConfig = require('./routes/index.routes.js') // importar el archivo de rutas 
 const globalConstants = require('./const/globalConstants.js') // importar el archivo de constantes globales 
-const logger = require('morgan') // importar dependencia 
- 
+const logger = require('morgan') // importar dependencia/libreria morgan (para depuración y logs)
+const  errorHandler = require('./middlewares/error') // importar el manejador de errores 
+const createError = require('http-errors') // importar dependencia/libreria de errores http
+// en lugar de "const" se podría usar "let"
+
 const configuracionApi = (app) => { // configurar la api
     app.use(express.json()) // para que la api pueda recibir json
     app.use(express.urlencoded({extended: true})) // para que la api pueda recibir formularios 
@@ -16,6 +19,13 @@ const configuracionApi = (app) => { // configurar la api
 
 const configuracionRouter = (app) => { // configurar las rutas
     app.use('/api/', routerConfig.rutas_init()) // para acceder a las rutas de la api siempre deberá empezar con /api/
+    
+    app.use(function (req, res, next) {
+        next(createError(404)) // si no se encuentra la ruta, se envia un error 404
+    })
+      
+    app.use(errorHandler) // configurar el middleware de manejo de errores
+
 };
 
 const init = () => {  // arrancar el servidor 

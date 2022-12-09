@@ -1,7 +1,7 @@
 // FUNCIONAMIENTO DE TODAS LAS RUTAS DE PACIENTE
 
 const models = require("../database/models/index")
-//const errors = require("../const/errors")
+const errors = require("../const/errors")
 
 module.exports = {
 
