@@ -18,7 +18,7 @@ app.get('/:nombre ', (req, res) => { // req: request, res: response
 
 // GET /
 app.get('/', (req, res) => { // req: request, res: response
-    res.send('Hola Mundo TP1'); // envia una respuesta
+    res.send('Hola Mundo'); // envia una respuesta
 });
 
 

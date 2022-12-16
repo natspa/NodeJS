@@ -26,10 +26,16 @@ module.exports = {
             const paciente = await models.paciente.findOne({
                 where: {
                     id: req.params.idPaciente
-                }
+                },
+                include:[{
+                    model: models.tratamiento,   // Pasar por tabla intermedia
+                    include:[{
+                        model: models.medico                    
+                    }]                    
+                }]
             })
             if (!paciente) return next(errors.PacienteInexistente)
-
+            
             res.json({
                 success: true,
                 data: {
@@ -44,7 +50,12 @@ module.exports = {
 
     crear: async (req, res, next) => {
         try {
-            const paciente = await models.paciente.create(req.body)
+            const paciente = await models.paciente.create(req.body)  // Crea al paciente
+            
+            const relacion = await models.tratamiento.create({       // Crea la relación con  médico que ya tiene que existir
+                pacienteId: paciente.id,                             // Envia el id del paciente recién creado
+                medicoId: req.body.medicoId                          // Envia el recibido por el body
+            })
 
             res.json({
                 success: true,
@@ -55,19 +66,6 @@ module.exports = {
 
         } catch (err) {
             return next(err)
-        }
-    },
-
-    prueba: async (req, res) => {
-        try {
-            console.log('Ejecutando prueba PACIENTES')
-            
-            res.json({
-                message: "Hola Mundo PACIENTES"
-            })
-
-        } catch (err) {
-            console.log(err)      
         }
     },
 

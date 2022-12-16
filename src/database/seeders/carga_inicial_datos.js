@@ -2,11 +2,13 @@
 
 'use strict';
 
-const { sequelize } = require("../models/index");
+console.log('PASO 1')
+
 const models = require("../models/index");
 
+console.log('PASO 2')
 module.exports = {
-    
+   
     up: function (queryInterface, Sequelize) {
         return Promise.all([
             models.paciente.findOrCreate({
@@ -15,6 +17,7 @@ module.exports = {
                 },
                 defaults: {
                     nombre: "JP",
+
                     apellido: "Borthiry",
                     email: "jpb@mail.com",
                     edad: 54
@@ -45,6 +48,7 @@ module.exports = {
         ])
     },
     
+
     down:(queryInterface, Sequelize) => {
         /* 
       Add reverting commands here. 
@@ -54,5 +58,7 @@ module.exports = {
       return queryInterface.dropTable('pacientes')
       */
     }
-    
-};
+     
+};  
+
+

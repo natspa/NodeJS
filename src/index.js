@@ -9,17 +9,15 @@ const  errorHandler = require('./middlewares/error') // importar el manejador de
 const createError = require('http-errors') // importar dependencia/libreria de errores http
 // en lugar de "const" se podría usar "let"
 
-const configuracionApi = (app) => { // configurar la api
+const configApi = (app) => { // configurar la api
     app.use(express.json()) // para que la api pueda recibir json
-    app.use(express.urlencoded({extended: true})) // para que la api pueda recibir formularios 
+    app.use(express.urlencoded({extended: true})) // permite que express entienda formularios enviados por post 
     app.use (logger('dev')) //   
-
     return;
 }; 
 
-const configuracionRouter = (app) => { // configurar las rutas
+const configRouter = (app) => { // configurar las rutas
     app.use('/api/', routerConfig.rutas_init()) // para acceder a las rutas de la api siempre deberá empezar con /api/
-    
     app.use(function (req, res, next) {
         next(createError(404)) // si no se encuentra la ruta, se envia un error 404
     })
@@ -30,10 +28,10 @@ const configuracionRouter = (app) => { // configurar las rutas
 
 const init = () => {  // arrancar el servidor 
     const app = express() // crear una instancia de express
-    configuracionApi(app) // configurar la api
-    configuracionRouter(app)  // configurar las rutas
+    configApi(app) // configurar la api
+    configRouter(app)  // configurar las rutas
     app.listen(globalConstants.PORT) // escuchar en el puerto
-    console.log('La aplicación se está ejecutando en el puerto: ' + globalConstants.PORT) // mostrar en consola que se está ejecutando la aplicación en el puerto correspondiente
+    console.log('La aplicación se está escuchando en el puerto: ' + globalConstants.PORT) // mostrar en consola que se está ejecutando la aplicación en el puerto correspondiente
 };
 
 init(); // iniciar la aplicación
