@@ -1,4 +1,4 @@
-// FUNCIONAMIENTO DE TODAS LAS RUTAS DE PACIENTE
+// TODAS LAS FUNCIONALIDADES DEL PACIENTE
 
 const models = require("../database/models/index")
 const errors = require("../const/errors")

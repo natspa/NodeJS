@@ -1,4 +1,4 @@
-// FUNCIONAMIENTO DE TODAS LAS RUTAS DE MEDICO
+// TODAS LAS FUNCIONALIDADES DEL MEDICO
 
 const models = require("../database/models/index")
 const errors = require("../const/errors")

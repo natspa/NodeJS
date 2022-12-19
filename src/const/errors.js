@@ -28,6 +28,24 @@ module.exports = {
         code: 1011,
         message: 'No Es Paciente'
     },
-
-
+    'FaltanCampos': {
+        code: 1001,
+        message: 'Faltan parámetros necesarios'
+    },
+    'UsuarioInexistente': {
+        code: 1002,
+        message: 'El usuario no existe'
+    },
+    'CredencialesInvalidas': {
+        code: 1004,
+        message: 'Credenciales inválidas'
+    },
+    'UsuarioNoAutorizado': {
+        code: 1005,
+        message: 'Usuario no autorizado'
+    },
+    'SesionExpirada': {
+        code: 1006,
+        message: 'Sesión expirada'
+    }
 }

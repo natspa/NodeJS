@@ -2,22 +2,18 @@
 
 'use strict';
 
-console.log('PASO 1')
-
 const models = require("../models/index");
 
-console.log('PASO 2')
 module.exports = {
    
     up: function (queryInterface, Sequelize) {
         return Promise.all([
             models.paciente.findOrCreate({
                 where: {
-                    id: "1"
+                    id: "11"
                 },
                 defaults: {
                     nombre: "JP",
-
                     apellido: "Borthiry",
                     email: "jpb@mail.com",
                     edad: 54
@@ -25,7 +21,7 @@ module.exports = {
             }),
             models.paciente.findOrCreate({
                 where: {
-                    id: "2"
+                    id: "12"
                 },
                 defaults: {
                     nombre: "Vidurrin",
@@ -36,7 +32,7 @@ module.exports = {
             }),
             models.paciente.findOrCreate({
                 where: {
-                    id: "3"
+                    id: "13"
                 },
                 defaults: {
                     nombre: "Nat",
@@ -58,7 +54,9 @@ module.exports = {
       return queryInterface.dropTable('pacientes')
       */
     }
+   
      
-};  
+};
+
 
 
